@@ -180,8 +180,8 @@ int main(){
 
                 Output[i] = 1.0/(1.0 + exp(-Accum)); //calculates output activation
 
-                OutputDelta[i] = (Target[p][i] - Output[i]) * Output[i] * (1.0 - Output[i]); // calculating the delta? what is this? not the partial derivative
-                Error += 0.5 * (Target[p][i] - Output[i]) * (Target[p][i] - Output[i]); // this is the error function - its 0.5*(target -  output)^2
+                OutputDelta[i] = (Target[p][i] - Output[i]) * Output[i] * (1.0 - Output[i]);
+                Error += 0.5 * (Target[p][i] - Output[i]) * (Target[p][i] - Output[i]); 
             }
 
             //backpropogate the errors to the hidden layer
@@ -194,7 +194,7 @@ int main(){
                     Accum += OutputWeights[i][j] * OutputDelta[j]; // product of output weights and output delta for each node - accum calculated for each hidden node
                 }
 
-                HiddenDelta[i] = Accum * Hidden[i] * (1.0 - Hidden[j]); // calculates hidden delta - again how? what is this delta, relevant to partial derivatives? - simply the difference relative to other nodes. not sure with pd's
+                HiddenDelta[i] = Accum * Hidden[i] * (1.0 - Hidden[j]); // calculates hidden delta
             }
 
             //update hidden weights
@@ -204,7 +204,7 @@ int main(){
                 HiddenWeights[j][i] += ChangeHiddenWeights[j][i]; // implements change to weights
 
                 for(j = 0; j < InputNodes; j++){
-                    ChangeHiddenWeights[j][i] = LearningRate *  Input[p][j] * HiddenDelta[i] + Momentum * ChangeOutputWeights[j][i]; // why does it update things twice? - it doesnt, it does every j for each i.
+                    ChangeHiddenWeights[j][i] = LearningRate *  Input[p][j] * HiddenDelta[i] + Momentum * ChangeOutputWeights[j][i]; 
                     HiddenWeights[j][i] += ChangeHiddenWeights[j][i];
                 }
             }
