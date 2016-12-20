@@ -1,3 +1,4 @@
+/*      Tom Davies 2015 - FF Neural Net - github.com/tomogwen   */
 
 #include <iostream>
 #include <math.h>
@@ -248,3 +249,4 @@ int main(){
 
     cout << "\n\nComplete";
 }
+
