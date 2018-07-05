@@ -64,7 +64,6 @@ def backprop(xj, ybar, yj, a1):
     return dW2, del3, dW1, del2
 
 
-
 if __name__ == "__main__":
     results = []
     for i in range(10000):
